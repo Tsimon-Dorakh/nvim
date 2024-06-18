@@ -33,8 +33,14 @@ require('lspconfig').lua_ls.setup({
 local cmp = require('cmp')
 
 cmp.setup({
-  mapping = cmp.mapping.preset.insert({
-    ['<CR>'] = cmp.mapping.confirm({select = false}),
-  }),
+    preselect = 'item',
+    completion = {
+        completeopt = 'menu,menuone,noinsert',
+        autocomplete = false, -- Disable showing autocomplete popup by default
+    },
+    mapping = cmp.mapping.preset.insert({
+        ['<CR>'] = cmp.mapping.confirm({select = false}), -- Confirm popup item by Enter
+        ['<C-Space>'] = cmp.mapping.complete(), -- Show autocomplete Ctrl+Space
+    }),
 })
 
