@@ -31,4 +31,11 @@ vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
 vim.opt.autowriteall = true
 
+vim.opt.modeline = true
 
+vim.opt.list = true
+vim.opt.listchars = {
+    space = '.',
+    tab = '>~',
+    -- eol = '$'
+}

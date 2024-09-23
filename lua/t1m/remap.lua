@@ -19,3 +19,11 @@ vim.keymap.set({"n"}, "<C-f5>", function()
         vim.cmd("!cargo run")
     end
 end, { noremap = true, silent = true })
+
+vim.keymap.set({"n"}, "<C-f6>", function() 
+    vim.cmd("!cargo test")
+end, { noremap = true, silent = true })
+
+
+
+
