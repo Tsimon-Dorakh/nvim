@@ -53,5 +53,8 @@ cmp.setup({
     mapping = cmp.mapping.preset.insert({
         ['<CR>'] = cmp.mapping.confirm({ select = false }), -- Confirm popup item by Enter
         ['<C-Space>'] = cmp.mapping.complete(),             -- Show autocomplete Ctrl+Space
+        -- scroll up and down the documentation window
+        ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-d>'] = cmp.mapping.scroll_docs(4),
     }),
 })
