@@ -4,6 +4,7 @@ neotest.setup({
     adapters = {
         require("neotest-rust"){
             args = { "--no-capture" },
+            -- args = { "--no-capture --run-ignored all" },
         }
     }
 })
