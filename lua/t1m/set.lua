@@ -28,7 +28,7 @@ vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
 
-vim.opt.colorcolumn = "80"
+vim.opt.colorcolumn = "120"
 vim.opt.autowriteall = true
 
 vim.opt.modeline = true
@@ -39,3 +39,9 @@ vim.opt.listchars = {
     tab = '>~',
     -- eol = '$'
 }
+
+-- https://vi.stackexchange.com/a/42391
+vim.opt.foldmethod = "expr"
+vim.opt.foldlevel = 20
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+
