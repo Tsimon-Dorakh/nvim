@@ -26,8 +26,8 @@ vim.keymap.set("n", "<leader>tf", function()
 end)
 
 vim.keymap.set("n", "<leader>to", function()
-    -- neotest.output.open({ enter = true })
-    neotest.output_panel.toggle()
+    neotest.output.open({ enter = true })
+    -- neotest.output_panel.toggle()
 end)
 
 -- Go to file from test output
