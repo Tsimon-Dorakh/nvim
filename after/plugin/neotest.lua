@@ -3,9 +3,9 @@ local neotest = require("neotest")
 neotest.setup({
     adapters = {
         require("neotest-rust"){
-            args = function() return { "--no-capture" } end,
+            args = function() return { "--no-capture --hide-progress-bar" } end,
         }
-    }
+    },
 })
 
 vim.keymap.set("n", "<leader>ts", function()
@@ -13,12 +13,17 @@ vim.keymap.set("n", "<leader>ts", function()
 end)
 
 vim.keymap.set("n", "<leader>tw", function()
-    neotest.watch.toggle()
+    neotest.watch.toggle({ extra_args = { "--run-ignored all" } })
 end)
 
 vim.keymap.set("n", "<leader>tc", function()
-    neotest.output_panel.clear()
+    -- neotest.output_panel.clear()
     neotest.run.run({ extra_args = { "--run-ignored all" } })
+end)
+
+vim.keymap.set("n", "<leader>tl", function()
+    -- neotest.output_panel.clear()
+    neotest.run.run_last({ extra_args = { "--run-ignored all" } })
 end)
 
 vim.keymap.set("n", "<leader>tf", function()
@@ -26,8 +31,11 @@ vim.keymap.set("n", "<leader>tf", function()
 end)
 
 vim.keymap.set("n", "<leader>to", function()
-    neotest.output.open({ enter = true })
-    -- neotest.output_panel.toggle()
+    neotest.output.open({ enter = true, last_run = true })
+end)
+
+vim.keymap.set("n", "<leader>tp", function()
+    neotest.output_panel.toggle()
 end)
 
 -- Go to file from test output

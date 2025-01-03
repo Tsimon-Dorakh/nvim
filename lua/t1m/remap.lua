@@ -11,12 +11,22 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 -- duplicate selected
 vim.keymap.set({ "v" }, "<C-d>", "y'>p")
 
+vim.keymap.set("n", "<C-n>", "<cmd>bnext<CR>")
+vim.keymap.set("n", "<C-p>", "<cmd>bprev<CR>")
+vim.keymap.set("n", "<C-q>", "<cmd>bd<CR>")
+
+vim.keymap.set('n', '<leader>gr', function()
+    require('telescope.builtin').lsp_references()
+end, { noremap = true, silent = true })
+
 -- vim.keymap.set({"n"}, "<C-f5>", "<cmd>!cargo run <CR>")
 vim.keymap.set({ "n" }, "<C-f5>", function()
     if vim.bo.filetype == "c" then
         vim.cmd("!gcc % && ./a.out")
     elseif vim.bo.filetype == "python" then
         vim.cmd("!python3 %")
+    elseif vim.bo.filetype == "java" then
+        vim.cmd("!java %")
     else
         vim.cmd("!cargo run")
     end
