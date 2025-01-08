@@ -19,6 +19,8 @@ vim.keymap.set('n', '<leader>gr', function()
     require('telescope.builtin').lsp_references()
 end, { noremap = true, silent = true })
 
+vim.api.nvim_set_keymap('n', '<leader>d', ':lua require("telescope.builtin").diagnostics()<CR>', { noremap = true, silent = true })
+
 -- vim.keymap.set({"n"}, "<C-f5>", "<cmd>!cargo run <CR>")
 vim.keymap.set({ "n" }, "<C-f5>", function()
     if vim.bo.filetype == "c" then

@@ -6,6 +6,12 @@ neotest.setup({
             args = function() return { "--no-capture --hide-progress-bar" } end,
         }
     },
+    output = {
+      open_on_run = false,
+    },
+    output_panel = {
+      open = "botright vsplit | vertical resize 60 | set wrap"
+    },
 })
 
 vim.keymap.set("n", "<leader>ts", function()
@@ -41,7 +47,7 @@ end)
 -- Go to file from test output
 -- https://github.com/nvim-neotest/neotest/issues/387#issuecomment-2409133005
 vim.api.nvim_create_autocmd('filetype', {
-    pattern = 'neotest-output',
+    pattern = { 'neotest-output' },
     callback = function()
         -- Open file under cursor in the widest window available.
         vim.keymap.set('n', 'gF', function()
