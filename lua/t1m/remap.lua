@@ -37,3 +37,12 @@ end, { noremap = true, silent = true })
 vim.keymap.set({ "n" }, "<C-f6>", function()
     vim.cmd("!cargo test")
 end, { noremap = true, silent = true })
+
+
+vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], { noremap = true })
+vim.keymap.set('n', '<leader>t', function()
+  vim.cmd.vnew()
+  vim.cmd.term()
+  vim.cmd.wincmd("J")
+  vim.api.nvim_win_set_height(0, 5)
+end)

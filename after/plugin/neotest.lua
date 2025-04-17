@@ -7,10 +7,11 @@ neotest.setup({
         }
     },
     output = {
+      open = "set wrap",
       open_on_run = false,
     },
     output_panel = {
-      open = "botright vsplit | vertical resize 60 | set wrap"
+      open = "botright vsplit | vertical resize 60 | set wrap",
     },
 })
 
@@ -49,6 +50,9 @@ end)
 vim.api.nvim_create_autocmd('filetype', {
     pattern = { 'neotest-output' },
     callback = function()
+        vim.wo.wrap = true
+        vim.wo.number = true
+
         -- Open file under cursor in the widest window available.
         vim.keymap.set('n', 'gF', function()
             local current_word = vim.fn.expand("<cWORD>")
