@@ -19,7 +19,15 @@ vim.keymap.set('n', '<leader>gr', function()
     require('telescope.builtin').lsp_references()
 end, { noremap = true, silent = true })
 
-vim.api.nvim_set_keymap('n', '<leader>d', ':lua require("telescope.builtin").diagnostics()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap(
+    'n',
+    '<leader>d',
+    ':lua require("telescope.builtin").diagnostics()<CR>',
+    {
+        noremap = true,
+        silent = true,
+    }
+)
 
 -- vim.keymap.set({"n"}, "<C-f5>", "<cmd>!cargo run <CR>")
 vim.keymap.set({ "n" }, "<C-f5>", function()
@@ -39,6 +47,7 @@ vim.keymap.set({ "n" }, "<C-f6>", function()
 end, { noremap = true, silent = true })
 
 
+-- Terminal mappings
 vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], { noremap = true })
 vim.keymap.set('n', '<leader>t', function()
   vim.cmd.vnew()
