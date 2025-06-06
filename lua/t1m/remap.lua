@@ -15,6 +15,9 @@ vim.keymap.set("n", "<C-n>", "<cmd>bnext<CR>")
 vim.keymap.set("n", "<C-p>", "<cmd>bprev<CR>")
 vim.keymap.set("n", "<C-q>", "<cmd>bd<CR>")
 
+-- Search and replace selected text
+vim.keymap.set("v", "<C-r>", "\"hy:%s/<C-r>h//gc<left><left><left>")
+
 vim.keymap.set('n', '<leader>gr', function()
     require('telescope.builtin').lsp_references()
 end, { noremap = true, silent = true })
