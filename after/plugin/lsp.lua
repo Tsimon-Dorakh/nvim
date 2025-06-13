@@ -15,6 +15,7 @@ lsp_zero.format_on_save({
     },
     servers = {
         ['rust_analyzer'] = { 'rust' },
+        ['gopls'] = {'go'},
     }
 })
 
@@ -36,7 +37,7 @@ require('lspconfig').lua_ls.setup({
     settings = {
         Lua = {
             diagnostics = {
-                globals = { 'vim' }
+                globals = { 'vim' },
             }
         }
     }
@@ -57,4 +58,13 @@ cmp.setup({
         ['<C-u>'] = cmp.mapping.scroll_docs(-4),
         ['<C-d>'] = cmp.mapping.scroll_docs(4),
     }),
+})
+
+vim.diagnostic.config({
+  virtual_text = true,
+  signs = true,
+  update_in_insert = false,
+  underline = true,
+  severity_sort = false,
+  float = true,
 })
