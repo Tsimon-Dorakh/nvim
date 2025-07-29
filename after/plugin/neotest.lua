@@ -4,7 +4,8 @@ neotest.setup({
     adapters = {
         require("neotest-rust"){
             args = function() return { "--no-capture --hide-progress-bar" } end,
-        }
+        },
+        require("neotest-go"),
     },
     output = {
       open = "set wrap",
@@ -15,22 +16,40 @@ neotest.setup({
     },
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "go",
+    callback = function()
+        vim.keymap.set("n", "<leader>tc", function()
+            neotest.run.run()
+        end)
+
+        vim.keymap.set("n", "<leader>tl", function()
+            neotest.run.run_last()
+        end)
+    end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "rust",
+    callback = function()
+        vim.keymap.set("n", "<leader>tw", function()
+            neotest.watch.toggle({ extra_args = { "--run-ignored all" } })
+        end)
+
+        vim.keymap.set("n", "<leader>tc", function()
+            -- neotest.output_panel.clear()
+            neotest.run.run({ extra_args = { "--run-ignored all" } })
+        end)
+
+        vim.keymap.set("n", "<leader>tl", function()
+            -- neotest.output_panel.clear()
+            neotest.run.run_last({ extra_args = { "--run-ignored all" } })
+        end)
+    end,
+})
+
 vim.keymap.set("n", "<leader>ts", function()
     neotest.summary.toggle()
-end)
-
-vim.keymap.set("n", "<leader>tw", function()
-    neotest.watch.toggle({ extra_args = { "--run-ignored all" } })
-end)
-
-vim.keymap.set("n", "<leader>tc", function()
-    -- neotest.output_panel.clear()
-    neotest.run.run({ extra_args = { "--run-ignored all" } })
-end)
-
-vim.keymap.set("n", "<leader>tl", function()
-    -- neotest.output_panel.clear()
-    neotest.run.run_last({ extra_args = { "--run-ignored all" } })
 end)
 
 vim.keymap.set("n", "<leader>tf", function()

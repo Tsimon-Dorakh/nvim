@@ -75,7 +75,8 @@ return require('packer').startup(function(use)
             "nvim-lua/plenary.nvim",
             "antoinemadec/FixCursorHold.nvim",
             "nvim-treesitter/nvim-treesitter",
-            "rouge8/neotest-rust"
+            "rouge8/neotest-rust",
+            "nvim-neotest/neotest-go",
         }
     }
 

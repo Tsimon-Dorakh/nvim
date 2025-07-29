@@ -46,6 +46,6 @@ vim.opt.foldlevel = 20
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 
 -- from https://rsdlt.github.io/posts/rust-nvim-ide-guide-walkthrough-development-debug/#set-up-rust-with-neovimhttps://rsdlt.github.io/posts/rust-nvim-ide-guide-walkthrough-development-debug/#set-up-rust-with-neovim
-vim.wo.fodmethod = 'expr'
-vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
+-- vim.wo.fodmethod = 'expr'
+-- vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
 
