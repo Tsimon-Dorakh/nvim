@@ -16,3 +16,9 @@ vim.api.nvim_create_autocmd({ "WinLeave", "FocusLost" }, {
     pattern = "*",
     command = "silent! write"
 })
+
+-- Project specific settings
+local project_config = vim.fn.getcwd() .. "/.nvim.lua"
+if vim.fn.filereadable(project_config) == 1 then
+    dofile(project_config)
+end
