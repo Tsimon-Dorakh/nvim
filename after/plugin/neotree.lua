@@ -44,7 +44,16 @@ require('neo-tree').setup {
             hide_dotfiles = false,
             hide_gitignored = true,
         },
-    }
+    },
+    event_handlers = {
+        { -- [Auto Close on Open File](https://github.com/nvim-neo-tree/neo-tree.nvim/wiki/Recipes#auto-close-on-open-file)
+            event = "file_open_requested",
+            handler = function()
+                require("neo-tree.command").execute({ action = "close" })
+            end
+        },
+
+    },
 }
 
 vim.keymap.set("n", "<leader>pt", function()
