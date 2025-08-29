@@ -76,12 +76,17 @@ return require('packer').startup(function(use)
             "antoinemadec/FixCursorHold.nvim",
             "nvim-treesitter/nvim-treesitter",
             "rouge8/neotest-rust",
-            "nvim-neotest/neotest-go",
+            { "fredrikaverpil/neotest-golang", version = "*" }, -- Installation
         }
     }
 
     use { "airblade/vim-gitgutter" }
     use { 'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
+
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+    }
 
     -- use {
     --     'rmagatti/auto-session',

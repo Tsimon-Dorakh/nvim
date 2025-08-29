@@ -1,11 +1,15 @@
 local neotest = require("neotest")
 
+local neotest_golang_opts = {  -- Specify configuration
+    args = { "-tags=integration" },
+};
+
 neotest.setup({
     adapters = {
+        require("neotest-golang")(neotest_golang_opts),
         require("neotest-rust"){
             args = function() return { "--no-capture --hide-progress-bar" } end,
         },
-        require("neotest-go"),
     },
     output = {
       open = "set wrap",
@@ -16,18 +20,18 @@ neotest.setup({
     },
 })
 
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "go",
-    callback = function()
-        vim.keymap.set("n", "<leader>tc", function()
-            neotest.run.run()
-        end)
-
-        vim.keymap.set("n", "<leader>tl", function()
-            neotest.run.run_last()
-        end)
-    end,
-})
+-- vim.api.nvim_create_autocmd("FileType", {
+--     pattern = "go",
+--     callback = function()
+--         vim.keymap.set("n", "<leader>tc", function()
+--             neotest.run.run()
+--         end)
+--
+--         vim.keymap.set("n", "<leader>tl", function()
+--             neotest.run.run_last()
+--         end)
+--     end,
+-- })
 
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "rust",
